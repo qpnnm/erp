@@ -16,5 +16,13 @@ function goPage(){
 	location.href='${rMap.url}';
 }
 </script>
+<!-- <script>
+alert("${eMsg.msg }");
+location.href="${eMsg.uri }";
+</script>
+<script>
+alert("${gMsg.msg }");
+location.href="${gMsg.uri }";
+</script> -->
 </body>
 </html>
