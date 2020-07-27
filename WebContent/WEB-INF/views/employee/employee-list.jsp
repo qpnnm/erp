@@ -19,7 +19,7 @@
 		</tr>
 		<c:if test="${empty employeeList}">
 			<tr>
-				<td colspan="3">내용이 없습니다.</td>
+				<td colspan="5">내용이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${employeeList}" var="employee">

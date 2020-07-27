@@ -44,11 +44,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		int result = 0;
 		try {
 			con = Conn.open();
-			String sql = "update Employee set emp_name=?,emp_salary=? where emp_no=?";
+			String sql = " update employee set emp_name=?,emp_salary=?,grd_no=?,emp_active=? where emp_no=? ";
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, employee.get("emp_name"));
 			ps.setObject(2, employee.get("emp_salary"));
-			ps.setObject(3, employee.get("emp_no"));
+			ps.setObject(3, employee.get("grd_no"));
+			ps.setObject(4, employee.get("emp_active"));
+			ps.setObject(5, employee.get("emp_no"));
 			result = ps.executeUpdate();
 			con.commit();
 		} catch (SQLException e) {
@@ -66,11 +68,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		int result = 0;
 		try {
 			con = Conn.open();
-			String sql = "delete from employee where emp_no=?";
+			String sql = " delete from employee where emp_no=? ";
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, employee.get("emp_no"));
 			result = ps.executeUpdate();
-			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -87,7 +88,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ResultSet rs = null;
 		try {
 			con = Conn.open();
-			String sql = "select * from Employee where emp_no=?";
+			String sql = " select * from Employee where emp_no=? ";
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, employee.get("emp_no"));
 			rs = ps.executeQuery();
@@ -116,7 +117,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ResultSet rs = null;
 		try {
 			con = Conn.open();
-			String sql = "select * from Employee";
+			String sql = " select * from Employee ";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {

@@ -22,12 +22,12 @@ public class EmployeeServlet extends HttpServlet {
 		String uri = request.getRequestURI();
 		if ("/employee/employee-list".equals(uri)) {
 			request.setAttribute("employeeList", employeeService.selectEmployeeList(null));
-			RequestDispatcher rd = request.getRequestDispatcher("/views/employee/employee-list");
+			RequestDispatcher rd = request.getRequestDispatcher("/views" + uri);
 			rd.forward(request, response);
 		} else if ("/employee/employee-view".equals(uri)) {
 			Map<String, Object> employee = new HashMap<>();
-			employee.put("emp_no", request.getParameter("emp_no"));
 			request.setAttribute("employee", employeeService.selectEmployee(employee));
+			employee.put("emp_no", request.getParameter("emp_no"));
 			RequestDispatcher rd = request.getRequestDispatcher("/views/employee/employee-view");
 			rd.forward(request, response);
 		}
@@ -61,5 +61,5 @@ public class EmployeeServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg");
 		rd.forward(request, response);
-	} 
+	}
 }

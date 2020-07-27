@@ -42,4 +42,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return eDao.selectEmployeeList(employee);
 	}
 
+	
+	public static void main(String[] args) {
+		EmployeeService eDao = new EmployeeServiceImpl();
+		Map<String, Object> rMap = new HashMap<>();
+		rMap.put("emp_no", 198);
+		eDao.deleteEmployee(rMap);
+	}
+	
 }
