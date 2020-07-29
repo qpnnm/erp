@@ -14,10 +14,10 @@ public class Conn {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Connection open() {
 		try {
-			Connection con =  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe","c##test","test");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "test", "test");
 			con.setAutoCommit(false);
 			return con;
 		} catch (SQLException e) {
@@ -25,8 +25,9 @@ public class Conn {
 		}
 		return null;
 	}
+
 	public static void close(ResultSet rs) {
-		if(rs!=null) {
+		if (rs != null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
@@ -34,8 +35,9 @@ public class Conn {
 			}
 		}
 	}
+
 	public static void close(Connection con) {
-		if(con!=null) {
+		if (con != null) {
 			try {
 				con.close();
 			} catch (SQLException e) {
@@ -43,8 +45,9 @@ public class Conn {
 			}
 		}
 	}
-	public static void close(PreparedStatement ps){
-		if(ps!=null) {
+
+	public static void close(PreparedStatement ps) {
+		if (ps != null) {
 			try {
 				ps.close();
 			} catch (SQLException e) {
@@ -52,22 +55,15 @@ public class Conn {
 			}
 		}
 	}
-	public static void close(PreparedStatement ps,Connection con) {
+
+	public static void close(PreparedStatement ps, Connection con) {
 		close(ps);
 		close(con);
 	}
 
-	public static void close(ResultSet rs,PreparedStatement ps,Connection con) {
+	public static void close(ResultSet rs, PreparedStatement ps, Connection con) {
 		close(rs);
 		close(ps);
 		close(con);
 	}
 }
-
-
-
-
-
-
-
-

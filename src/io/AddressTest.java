@@ -41,44 +41,42 @@ public class AddressTest {
 			long sTime = System.currentTimeMillis();
 			String sql = "insert into address (";
 			String value = " values(";
-			for(String key:keys) {
+			for (String key : keys) {
 				sql += key + ",";
 				value += "?,";
 			}
-			sql = sql.substring(0,sql.length()-1) + ")\r\n";
-			value = value.substring(0,value.length()-1) + ")";
+			sql = sql.substring(0, sql.length() - 1) + ")\r\n";
+			value = value.substring(0, value.length() - 1) + ")";
 			sql += value;
 			Connection con = Conn.open();
 			PreparedStatement ps = con.prepareStatement(sql);
-			for(Map<String,String> row:list) {
-				for(int i=0;i<keys.length;i++) {
-					ps.setString((i+1), row.get(keys[i]));
+			int cnt = 1;
+			for (Map<String, String> row : list) {
+				for (int i = 0; i < keys.length; i++) {
+					ps.setString((i + 1), row.get(keys[i]));
 				}
-				ps.executeUpdate();
+				ps.addBatch();
+				if (cnt % 1000 == 0) {
+					ps.executeBatch();
+					ps.clearBatch();
+				}
+				cnt++;
+			}
+			if (list.size() % 1000 != 0) {
+				ps.executeBatch();
+				ps.clearBatch();
 			}
 			con.commit();
 			long eTime = System.currentTimeMillis();
-			System.out.println("실행시간 : " + (eTime-sTime));
+			System.out.println("실행시간 : " + (eTime - sTime));
 			return list.size();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
+
 	public static void main(String[] args) {
 		
 	}
 }
-
-
-
-
-
-
