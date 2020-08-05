@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function qa() {
+			var isHobby = confirm('너 취미있냐?');
+			alert(isHobby);
+			if (isHobby) {
+				var hobbies = prompt('취미가 뭡니까?');
+				document.write('오  취미가  ' + hobbies+'야?');
+			}
+		}
+	</script>
+	<button onclick="qa()">질문하기</button>
+</body>
+</html>

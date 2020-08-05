@@ -1,0 +1,11 @@
+		/* var a; //  undefined
+		a = null; // null
+		a = 1.1;//number
+		a = 'str'; // string
+		a = true; //boolean
+		a = function() {
+			console.log('함수');
+		}// a (); 가능
+		a = new Number(1); //Object
+		 */
+		//선언할 수 있는 데이터 타입은 없지만 내부적으로는 가지고 있다.
