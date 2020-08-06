@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/js/jquery-3.5.1.js"></script>
+<style>
+div {
+	width: 100px;
+	height: 100px;
+	background-color: lightblue;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+	<button id="b1">Move!</button>
+	<button id="b2">Back!</button>
+	<div id="rDiv">Moving Box</div>
+	<script>
+		$('#b1').click(function() {
+			$('#rDiv').animate({
+				left : '1000px',
+				width : '2000px',
+				height : '2000px'
+			});
+
+		})
+		$('#b1').click(function() {
+			$('#rDiv').animate({
+				right : '0x',
+				width : '100px',
+				height : '100px'
+			});
+
+		})
+	</script>
+</body>
+</html>
